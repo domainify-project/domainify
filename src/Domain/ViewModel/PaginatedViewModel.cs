@@ -19,7 +19,7 @@
         /// <summary>
         /// Gets the total number of pages based on the total count of items and the page size.
         /// </summary>
-        public int? TotalPages
+        public long? TotalPages
         {
             get
             {
@@ -33,7 +33,7 @@
         /// <summary>
         /// Gets the number of total items.
         /// </summary>
-        public int NumberOfTotalItems { get; private set; }
+        public long NumberOfTotalItems { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether there is a previous page.
@@ -59,7 +59,7 @@
         /// <param name="pageSize">The number of items per page (optional).</param>
         public PaginatedViewModel(
             List<TModel> items,
-            int numberOfTotalItems,
+            long numberOfTotalItems,
             int? pageNumber = null,
             int? pageSize = null)
         {

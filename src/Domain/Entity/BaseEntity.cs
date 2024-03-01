@@ -7,9 +7,9 @@
     public abstract class BaseEntity<TEntity>
     {
         /// <summary>
-        /// Gets or sets a value indicating whether the entity is marked as isArchived (soft delete).
+        /// Gets or sets a value indicating whether the entity is marked as isDeleted (soft delete).
         /// </summary>
-        public bool IsArchived { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
 
         /// <summary>
         /// Gets or sets the date and time when the entity was last modified.
@@ -33,11 +33,11 @@
         }
 
         /// <summary>
-        /// Archives the entity, setting the modification date.
+        /// Deletes the entity, setting the modification date.
         /// </summary>
-        public virtual void Archive()
+        public virtual void Delete()
         {
-            IsArchived = true;
+            IsDeleted = true;
             ModifiedDate = DateTime.UtcNow;
         }
 
@@ -46,14 +46,14 @@
         /// </summary>
         public virtual void Restore()
         {
-            IsArchived = false;
+            IsDeleted = false;
             ModifiedDate = DateTime.UtcNow;
         }
 
         /// <summary>
-        /// Deletes the entity (physical delete).
+        /// Deletes the entity permanently.
         /// </summary>
-        public virtual void Delete()
+        public virtual void DeletePermanently()
         {
         }
 

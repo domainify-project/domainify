@@ -51,17 +51,17 @@ namespace Domainify.Domain
         public bool TrackingMode { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets a flag indicating whether to include even archived data.
+        /// Gets or sets a flag indicating whether to include even deleted data.
         /// </summary>
-        public bool EvenArchivedData { get; set; } = false;
+        public bool EvenDeletedData { get; set; } = false;
 
         /// <summary>
-        /// Gets a value indicating whether to include archived data in the query configuration.
+        /// Gets a value indicating whether to include deleted data in the query configuration.
         /// </summary>
-        /// <returns>True if even archived data should be included; otherwise, false.</returns>
-        public virtual bool OnIncludingArchivedDataConfiguration()
+        /// <returns>True if even deleted data should be included; otherwise, false.</returns>
+        public virtual bool OnIncludingDeletedDataConfiguration()
         {
-            return EvenArchivedData;
+            return EvenDeletedData;
         }
 
         /// <summary>
