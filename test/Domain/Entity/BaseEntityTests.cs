@@ -34,13 +34,13 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void Archive_ShouldSetModifiedDate()
+        public void Delete_ShouldSetModifiedDate()
         {
             // Arrange
             var entity = new MockEntity();
 
             // Act
-            entity.Archive();
+            entity.Delete();
 
             // Assert
             entity.ModifiedDate.Should().NotBe(default);
@@ -66,7 +66,7 @@ namespace Domainify.Test.Domain
             var entity = new MockEntity();
 
             // Act & Assert
-            entity.Invoking(e => e.Delete()).Should().NotThrow();
+            entity.Invoking(e => e.DeletePermanently()).Should().NotThrow();
         }
 
         [TestMethod]

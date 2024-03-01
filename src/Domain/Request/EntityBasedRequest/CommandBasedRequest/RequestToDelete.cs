@@ -3,22 +3,28 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents a request to delete an entity of a specific type.
-    /// Typically a request to delete an entity is used to delete the entity physically. If the purpose is archiving, the request should be defined as the archiving.
+    /// Represents a request to delete an entity.
     /// </summary>
-    /// <typeparam name="TEntity">The type of the entity associated with the delete request.</typeparam>
+    /// <typeparam name="TEntity">The type of entity to delete.</typeparam>
     public abstract class RequestToDelete<TEntity> :
         BaseCommandRequest<TEntity>, IRequest
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
-        /// Asynchronously resolves the delete request and marks the associated entity as deleted.
+        /// Resolves the request to delete the specified entity.
         /// </summary>
-        /// <param name="mediator">The mediator used to resolve the delete request.</param>
-        /// <param name="entity">The associated entity to be deleted.</param>
+        /// <param name="mediator">The mediator instance to handle the resolution.</param>
+        /// <param name="entity">The entity to be deleted.</param>
         public async override Task ResolveAsync(IMediator mediator, TEntity entity)
         {
-            // Delete the entity
+            // Check if the entity is already deleted, if so, raise an invariant issue
+            await new InvariantState<TEntity>()
+                .DefineAnInvariant(
+                result: entity.IsDeleted,
+                issue: new AnEntityWasDeletedSoDeletingItAgainIsNotPossible(typeof(TEntity).Name))
+                .AssestAsync(mediator);
+
+            // Mark the entity as deleted
             entity.Delete();
         }
     }

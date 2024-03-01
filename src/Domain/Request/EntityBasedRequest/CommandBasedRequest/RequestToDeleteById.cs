@@ -3,10 +3,10 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents a request to delete an entity of a specific type by its identifier.
+    /// Represents a request to delete an entity by its identifier.
     /// </summary>
-    /// <typeparam name="TEntity">The type of the entity associated with the delete request.</typeparam>
-    /// <typeparam name="IdType">The type of the identifier for the entity.</typeparam>
+    /// <typeparam name="TEntity">The type of entity to delete.</typeparam>
+    /// <typeparam name="IdType">The type of the entity's identifier.</typeparam>
     public abstract class RequestToDeleteById<TEntity, IdType> :
         RequestToDelete<TEntity>
         where TEntity : Entity<TEntity, IdType>
@@ -14,31 +14,31 @@ namespace Domainify.Domain
         /// <summary>
         /// Initializes a new instance of the <see cref="RequestToDeleteById{TEntity, IdType}"/> class.
         /// </summary>
-        /// <param name="id">The identifier of the entity to be deleted.</param>
-        public RequestToDeleteById(IdType id)
+        /// <param name="id">The identifier of the entity to delete.</param>
+        public RequestToDeleteById(IdType id) 
         {
             Id = id;
         }
 
         /// <summary>
-        /// Gets or sets the identifier of the entity to be deleted.
+        /// Gets the identifier of the entity to delete.
         /// </summary>
         public IdType Id { get; private set; }
 
         /// <summary>
-        /// Overrides the base method to provide an identification expression based on the entity's identifier.
+        /// Returns an expression to identify the entity to delete based on its identifier.
         /// </summary>
-        /// <returns>The identification expression for the entity.</returns>
+        /// <returns>An expression representing the identification of the entity.</returns>
         public override Expression<Func<TEntity, bool>>? Identification()
         {
             return x => x.Id!.Equals(Id);
         }
 
         /// <summary>
-        /// Sets the identifier of the entity to be deleted.
+        /// Sets the identifier of the entity to delete.
         /// </summary>
-        /// <param name="value">The value to set as the identifier.</param>
-        /// <returns>The current instance of the delete request for fluent chaining.</returns>
+        /// <param name="value">The new identifier value.</param>
+        /// <returns>The current instance of <see cref="RequestToDeleteById{TEntity, IdType}"/>.</returns>
         public virtual RequestToDeleteById<TEntity, IdType> SetId(IdType value)
         {
             Id = value;

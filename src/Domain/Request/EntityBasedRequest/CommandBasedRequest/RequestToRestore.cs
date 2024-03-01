@@ -3,25 +3,25 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents a request to restore an archived entity of a specific type.
+    /// Represents a request to restore a deleted entity.
     /// </summary>
-    /// <typeparam name="TEntity">The type of the entity associated with the restore request.</typeparam>
+    /// <typeparam name="TEntity">The type of entity to restore.</typeparam>
     public abstract class RequestToRestore<TEntity> :
         BaseCommandRequest<TEntity>, IRequest
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
-        /// Asynchronously resolves the restore request and restores the associated entity.
+        /// Resolves the request to restore the specified entity.
         /// </summary>
-        /// <param name="mediator">The mediator used to resolve the restore request.</param>
-        /// <param name="entity">The associated entity to be restored.</param>
+        /// <param name="mediator">The mediator instance to handle the resolution.</param>
+        /// <param name="entity">The entity to be restored.</param>
         public async override Task ResolveAsync(IMediator mediator, TEntity entity)
         {
-            // Check if the entity is not archived before attempting to restore
+            // Check if the entity is not deleted, if so, raise an invariant issue
             await new InvariantState<TEntity>()
                 .DefineAnInvariant(
-                result: !entity.IsArchived,
-                issue: new NoEntityWasArchivedSoRestoringItIsNotPossible(typeof(TEntity).Name))
+                result: !entity.IsDeleted,
+                issue: new NoEntityWasDeletedSoRestoringItIsNotPossible(typeof(TEntity).Name))
                 .AssestAsync(mediator);
 
             // Restore the entity
