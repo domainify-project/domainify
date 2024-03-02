@@ -7,7 +7,7 @@ namespace Domainify.Domain
     /// </summary>
     /// <typeparam name="TEntity">The type of entity to delete.</typeparam>
     public abstract class RequestToDelete<TEntity> :
-        BaseCommandRequest<TEntity>, IRequest
+        CommandRequest<TEntity>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
@@ -21,7 +21,7 @@ namespace Domainify.Domain
             await new InvariantState<TEntity>()
                 .DefineAnInvariant(
                 result: entity.IsDeleted,
-                issue: new AnEntityWasDeletedSoDeletingItAgainIsNotPossible(typeof(TEntity).Name))
+                issue: new TheEntityWasDeletedSoDeletingItAgainIsNotPossible(typeof(TEntity).Name))
                 .AssestAsync(mediator);
 
             // Mark the entity as deleted

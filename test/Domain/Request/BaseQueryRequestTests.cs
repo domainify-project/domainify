@@ -40,7 +40,7 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public async Task NextAsync_Should_NotThrowException()
+        public async Task ThenAsync_Should_NotThrowException()
         {
             // Arrange
             var queryRequest = new TestQueryRequest();
@@ -48,7 +48,7 @@ namespace Domainify.Test.Domain
             var returnedValue = "test";
 
             // Act & Assert
-            Func<Task> act = async () => await queryRequest.NextAsync(mediatorMock.Object, returnedValue);
+            Func<Task> act = async () => await queryRequest.ThenAsync(mediatorMock.Object, returnedValue);
             await act.Should().ThrowAsync<NotImplementedException>();
         }
     }

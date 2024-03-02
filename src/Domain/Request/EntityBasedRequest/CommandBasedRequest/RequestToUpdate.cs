@@ -7,7 +7,7 @@ namespace Domainify.Domain
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity associated with the update request.</typeparam>
     public abstract class RequestToUpdate<TEntity> :
-        BaseCommandRequest<TEntity>, IRequest
+        CommandRequest<TEntity>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>

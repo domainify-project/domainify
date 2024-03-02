@@ -21,6 +21,16 @@ namespace Domainify.Domain
         }
 
         /// <summary>
+        /// Asynchronously resolves the command request.
+        /// </summary>
+        /// <param name="mediator">The mediator used to resolve the command request.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
+        public virtual Task ResolveAsync(IMediator mediator)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Asynchronously resolves the command request, retrieves the associated entity, and returns it.
         /// </summary>
         /// <param name="mediator">The mediator used to resolve the command request.</param>
@@ -42,12 +52,12 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Asynchronously handles the next step in the command processing using the provided mediator and the associated entity.
+        /// Asynchronously handles the then step in the command processing using the provided mediator and the associated entity.
         /// </summary>
-        /// <param name="mediator">The mediator used to handle the next step.</param>
+        /// <param name="mediator">The mediator used to handle the then step.</param>
         /// <param name="entity">The associated entity.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
-        public async virtual Task NextAsync(IMediator mediator, TEntity entity)
+        public async virtual Task ThenAsync(IMediator mediator, TEntity entity)
         {
             throw new NotImplementedException();
         }

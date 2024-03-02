@@ -8,7 +8,7 @@ namespace Domainify.Domain
     /// <typeparam name="TEntity">The type of the entity associated with the create request.</typeparam>
     /// <typeparam name="IReturnedType">The type of the returned value from the create request.</typeparam>
     public abstract class RequestToCreate<TEntity, IReturnedType> :
-        BaseCommandRequest<TEntity>, IRequest<IReturnedType>
+        ReturnableCommandRequest<TEntity, IReturnedType>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>

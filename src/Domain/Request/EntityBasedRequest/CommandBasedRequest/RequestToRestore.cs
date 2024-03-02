@@ -7,7 +7,7 @@ namespace Domainify.Domain
     /// </summary>
     /// <typeparam name="TEntity">The type of entity to restore.</typeparam>
     public abstract class RequestToRestore<TEntity> :
-        BaseCommandRequest<TEntity>, IRequest
+        CommandRequest<TEntity>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
