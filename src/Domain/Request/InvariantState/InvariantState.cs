@@ -5,15 +5,15 @@ using MediatR;
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents a state for managing invariant requests and issues for a specific entity type.
+    /// Represents a state for managing invariant requests and faults for a specific entity type.
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity associated with the invariant state.</typeparam>
     public class InvariantState<TEntity> where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
-        /// The list of issues associated with the invariant state.
+        /// The list of faults associated with the invariant state.
         /// </summary>
-        private readonly List<IIssue> _issues = new();
+        private readonly List<IFault> _issues = new();
 
         /// <summary>
         /// The list of invariant requests to be assessed.
@@ -21,9 +21,9 @@ namespace Domainify.Domain
         private readonly List<InvariantRequest<TEntity>> _invariantRequests = new();
 
         /// <summary>
-        /// Gets the list of issues associated with the invariant state.
+        /// Gets the list of faults associated with the invariant state.
         /// </summary>
-        public List<IIssue> GetIssues() => _issues;
+        public List<IFault> GetFaults() => _issues;
 
         /// <summary>
         /// Gets the list of invariant requests.
@@ -43,37 +43,37 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Defines an invariant based on a specified result and associated issue.
+        /// Defines an invariant based on a specified result and associated fault.
         /// </summary>
         /// <param name="result">The result of the condition.</param>
-        /// <param name="issue">The issue associated with the invariant.</param>
+        /// <param name="fault">The fault associated with the invariant.</param>
         /// <returns>The current instance of the invariant state for fluent chaining.</returns>
         public InvariantState<TEntity> DefineAnInvariant(
-            bool result, IIssue issue)
+            bool result, IFault fault)
         {
             if (result)
-                _issues.Add(issue);
+                _issues.Add(fault);
 
             return this;
         }
 
         /// <summary>
-        /// Defines an invariant based on a specified issue and condition.
+        /// Defines an invariant based on a specified fault and condition.
         /// </summary>
-        /// <param name="issue">The issue associated with the invariant.</param>
+        /// <param name="fault">The fault associated with the invariant.</param>
         /// <param name="condition">The condition to evaluate.</param>
         /// <returns>The current instance of the invariant state for fluent chaining.</returns>
         public InvariantState<TEntity> DefineAnInvariant(
-            IIssue issue, Func<bool> condition)
+            IFault fault, Func<bool> condition)
         {
             if (condition())
-                _issues.Add(issue);
+                _issues.Add(fault);
 
             return this;
         }
 
         /// <summary>
-        /// Asynchronously assesses all registered invariant requests and raises an error exception if any issues are detected.
+        /// Asynchronously assesses all registered invariant requests and raises an error exception if any faults are detected.
         /// </summary>
         /// <param name="mediator">The mediator used to send invariant requests.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
@@ -82,8 +82,8 @@ namespace Domainify.Domain
             foreach (var request in _invariantRequests)
             {
                 if ((bool)(await mediator.Send(request))!)
-                    if (request.GetIssue() != null)
-                        _issues.Add(request.GetIssue()!);
+                    if (request.GetFault() != null)
+                        _issues.Add(request.GetFault()!);
             }
 
             if (_issues.Count > 0)
@@ -91,7 +91,7 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Throws an error exception containing the list of detected invariant issues.
+        /// Throws an error exception containing the list of detected invariant faults.
         /// </summary>
         private void ThrowErrorException()
         {
@@ -99,7 +99,7 @@ namespace Domainify.Domain
                 new Error(
                     service: Assembly.GetEntryAssembly()!.GetName().Name!,
                     errorType: ErrorType.Invariant,
-                    issues: _issues));
+                    faults: _issues));
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Domainify
             Error error,
             EnvironmentState environmentState,
             object? stackTrace = null)
-            : base(error.Service, error.ErrorType, error.Issues)
+            : base(error.Service, error.ErrorType, error.Faults)
         {
             StackTrace = stackTrace;
             EnvironmentState = environmentState;
@@ -30,16 +30,16 @@ namespace Domainify
         /// </summary>
         /// <param name="service">The name of the service where the error occurred.</param>
         /// <param name="errorType">The type of the error.</param>
-        /// <param name="issues">A list of issues associated with the error.</param>
+        /// <param name="faults">A list of faults associated with the error.</param>
         /// <param name="environmentState">The environment state of the applicatin execution.</param>
         /// <param name="stackTrace">The stack trace associated with the error.</param>
         public DevError(
             string service,
             ErrorType errorType,
-            List<IIssue> issues,
+            List<IFault> faults,
             EnvironmentState environmentState,
             object? stackTrace = null)
-            : base(service, errorType, issues)
+            : base(service, errorType, faults)
         {
             StackTrace = stackTrace;
             EnvironmentState = environmentState;
@@ -65,7 +65,7 @@ namespace Domainify
 
         /// <inheritdoc/>
         [DataMember(Order = 5)]
-        public override List<IIssue> Issues => base.Issues;
+        public override List<IFault> Faults => base.Faults;
 
         /// <summary>
         /// Gets or sets the stack trace associated with the error.

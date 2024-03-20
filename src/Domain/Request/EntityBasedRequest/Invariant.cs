@@ -15,21 +15,21 @@ namespace Domainify.Domain
         public Expression<Func<TModel, bool>> Condition { get; set; }
 
         /// <summary>
-        /// Gets or sets the issue associated with the invariant constraint.
+        /// Gets or sets the fault associated with the invariant constraint.
         /// </summary>
-        public IIssue Issue { get; set; }
+        public IFault Fault { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Invariant{TModel}"/> class with the specified condition and issue.
+        /// Initializes a new instance of the <see cref="Invariant{TModel}"/> class with the specified condition and fault.
         /// </summary>
         /// <param name="condition">The condition expressed as a lambda expression that defines the invariant constraint.</param>
-        /// <param name="issue">The issue associated with the invariant constraint.</param>
+        /// <param name="fault">The fault associated with the invariant constraint.</param>
         public Invariant(
             Expression<Func<TModel, bool>> condition,
-            IIssue issue)
+            IFault fault)
         {
             Condition = condition;
-            Issue = issue;
+            Fault = fault;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Domainify.Test.Domain
                 return true;
             }
 
-            public override void Validate(object? value, ICollection<IIssue> issues, string propertyName = "")
+            public override void Validate(object? value, ICollection<IFault> faults, string propertyName = "")
             {
             }
         }

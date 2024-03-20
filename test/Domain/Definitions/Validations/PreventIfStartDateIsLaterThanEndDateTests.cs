@@ -46,10 +46,10 @@ namespace Domainify.Test.Domain
             var validationRule = new PreventIfStartDateIsLaterThanEndDate<TestEntity>(startDate, endDate);
 
             // Act
-            var issue = validationRule.GetIssue();
+            var fault = validationRule.GetFault();
 
             // Assert
-            issue.Should().BeNull();
+            fault.Should().BeNull();
         }
 
         [TestMethod]
@@ -61,11 +61,11 @@ namespace Domainify.Test.Domain
             var validationRule = new PreventIfStartDateIsLaterThanEndDate<TestEntity>(startDate, endDate);
 
             // Act
-            var issue = validationRule.GetIssue();
+            var fault = validationRule.GetFault();
 
             // Assert
-            issue.Should().NotBeNull();
-            issue.Should().BeOfType<StartDateCanNotBeLaterThanEndDate>();
+            fault.Should().NotBeNull();
+            fault.Should().BeOfType<StartDateCanNotBeLaterThanEndDate>();
         }
     }
 }

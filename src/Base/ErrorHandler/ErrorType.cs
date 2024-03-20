@@ -6,12 +6,12 @@
     public enum ErrorType
     {
         /// <summary>
-        /// Represents a technical error, often related to infrastructure or system-level issues.
+        /// Represents a technical error, often related to infrastructure or system-level faults.
         /// </summary>
         Technical,
 
         /// <summary>
-        /// Represents a logical error, indicating issues related to business logic or application flow.
+        /// Represents a logical error, indicating faults related to business logic or application flow.
         /// </summary>
         Logical,
 
@@ -21,7 +21,7 @@
         Invariant,
 
         /// <summary>
-        /// Represents a validation error, indicating issues related to input or data validation for a request.
+        /// Represents a validation error, indicating faults related to input or data validation for a request.
         /// </summary>
         Validation
     }

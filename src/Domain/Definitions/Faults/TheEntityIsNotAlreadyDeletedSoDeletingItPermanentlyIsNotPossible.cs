@@ -2,7 +2,7 @@
 
 namespace Domainify.Domain
 {
-    public class TheEntityIsNotAlreadyDeletedSoDeletingItPermanentlyIsNotPossible : InvariantIssue
+    public class TheEntityIsNotAlreadyDeletedSoDeletingItPermanentlyIsNotPossible : InvariantFault
     {
         public TheEntityIsNotAlreadyDeletedSoDeletingItPermanentlyIsNotPossible(
             string entityName = "", string description = "") :

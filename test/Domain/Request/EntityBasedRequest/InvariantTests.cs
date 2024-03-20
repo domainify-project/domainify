@@ -20,14 +20,14 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             Expression<Func<TestModel, bool>> condition = model => model.Age >= 18;
-            IIssue issue = new InvariantIssue("Invalid Age", string.Empty);
+            IFault fault = new InvariantFault("Invalid Age", string.Empty);
 
             // Act
-            var invariant = new Invariant<TestModel>(condition, issue);
+            var invariant = new Invariant<TestModel>(condition, fault);
 
             // Assert
             invariant.Condition.Should().Be(condition);
-            invariant.Issue.Should().Be(issue);
+            invariant.Fault.Should().Be(fault);
         }
     }
 }

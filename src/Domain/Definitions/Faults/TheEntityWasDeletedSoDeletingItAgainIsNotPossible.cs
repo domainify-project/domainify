@@ -3,15 +3,15 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents an issue where an attempt was made to delete an entity that has already been deleted.
+    /// Represents an fault where an attempt was made to delete an entity that has already been deleted.
     /// </summary>
-    public class TheEntityWasDeletedSoDeletingItAgainIsNotPossible : InvariantIssue
+    public class TheEntityWasDeletedSoDeletingItAgainIsNotPossible : InvariantFault
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TheEntityWasDeletedSoDeletingItAgainIsNotPossible"/> class.
         /// </summary>
         /// <param name="entityName">The name of the entity that was attempted to be deleted.</param>
-        /// <param name="description">A description of the issue.</param>
+        /// <param name="description">A description of the fault.</param>
         public TheEntityWasDeletedSoDeletingItAgainIsNotPossible(
             string entityName = "", string description = "") :
             base (outerDescription: description,

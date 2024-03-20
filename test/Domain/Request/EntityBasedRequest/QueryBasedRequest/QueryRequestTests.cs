@@ -5,6 +5,7 @@ namespace Domainify.Test.Domain
 {
     public class TestEntity : Entity<TestEntity, Guid>, IAggregateRoot
     {
+        public double Version { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
     public class TestQueryRequest : QueryRequest<TestEntity>
     {

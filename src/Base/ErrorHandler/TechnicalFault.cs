@@ -1,17 +1,17 @@
 ﻿namespace Domainify
 {
     /// <summary>
-    /// Represents a technical issue associated with errors in the application.
+    /// Represents a technical fault associated with errors in the application.
     /// </summary>
-    public class TechnicalIssue : IIssue
+    public class TechnicalFault : IFault
     {
         /// <summary>
-        /// Gets or sets the name of the technical issue.
+        /// Gets or sets the name of the technical fault.
         /// </summary>
         public string Name { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the description of the technical issue.
+        /// Gets or sets the description of the technical fault.
         /// </summary>
         public string Description { get; set; } = string.Empty;
     }

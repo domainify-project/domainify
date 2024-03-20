@@ -16,10 +16,10 @@ namespace Domainify.Domain
         public string Description { get; private set; } = string.Empty;
 
         /// <summary>
-        /// Gets the issue related to the invariant condition. Returns null if no issue exists.
+        /// Gets the fault related to the invariant condition. Returns null if no fault exists.
         /// </summary>
-        /// <returns>The issue related to the invariant condition, or null if no issue exists.</returns>
-        public virtual IIssue? GetIssue()
+        /// <returns>The fault related to the invariant condition, or null if no fault exists.</returns>
+        public virtual IFault? GetFault()
         {
             throw new NotImplementedException();
         }

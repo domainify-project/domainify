@@ -15,7 +15,7 @@ namespace Domainify.Test.Domain
             var innerDescription = "Inner Description";
 
             // Act
-            var logicalIssue = new LogicalIssue(outerDescription, innerDescription);
+            var logicalIssue = new LogicalFault(outerDescription, innerDescription);
 
             // Assert
             logicalIssue.Description.Should().Be(outerDescription);
@@ -28,7 +28,7 @@ namespace Domainify.Test.Domain
             var innerDescription = "Inner Description";
 
             // Act
-            var logicalIssue = new LogicalIssue(string.Empty, innerDescription);
+            var logicalIssue = new LogicalFault(string.Empty, innerDescription);
 
             // Assert
             logicalIssue.Description.Should().Be(innerDescription);
@@ -41,7 +41,7 @@ namespace Domainify.Test.Domain
             var outerDescription = "Outer Description";
 
             // Act
-            var logicalIssue = new LogicalIssue(outerDescription, string.Empty);
+            var logicalIssue = new LogicalFault(outerDescription, string.Empty);
 
             // Assert
             logicalIssue.Description.Should().Be(outerDescription);
@@ -51,7 +51,7 @@ namespace Domainify.Test.Domain
         public void Constructor_WithoutDescriptions_ShouldSetDefaultDescription()
         {
             // Act
-            var logicalIssue = new LogicalIssue(string.Empty, string.Empty);
+            var logicalIssue = new LogicalFault(string.Empty, string.Empty);
 
             // Assert
             logicalIssue.Description.Should().Be("A logical error has happened.");
@@ -61,10 +61,10 @@ namespace Domainify.Test.Domain
         public void Name_ShouldBeSetToFullTypeName()
         {
             // Act
-            var logicalIssue = new LogicalIssue(string.Empty, string.Empty);
+            var logicalIssue = new LogicalFault(string.Empty, string.Empty);
 
             // Assert
-            logicalIssue.Name.Should().Be(typeof(LogicalIssue).FullName);
+            logicalIssue.Name.Should().Be(typeof(LogicalFault).FullName);
         }
     }
 }

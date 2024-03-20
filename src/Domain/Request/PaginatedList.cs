@@ -1,10 +1,10 @@
 ﻿namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents a paginated view model for a collection of items.
+    /// Represents a paginated model for a collection of items.
     /// </summary>
     /// <typeparam name="TModel">The type of items in the collection.</typeparam>
-    public class PaginatedViewModel<TModel>
+    public class PaginatedList<TModel>
     {
         /// <summary>
         /// Gets the current page number.
@@ -23,7 +23,7 @@
         {
             get
             {
-                if (PageSize != null)
+                if (PageSize != null && PageSize != 0)
                     return (int)Math.Ceiling(NumberOfTotalItems / (double)PageSize);
                 
                 return null;
@@ -46,18 +46,18 @@
         public bool HasNextPage => PageNumber < TotalPages;
 
         /// <summary>
-        /// Gets or sets the list of items in the paginated view.
+        /// Gets or sets the list of items in the paginated model.
         /// </summary>
         public List<TModel> Items { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PaginatedViewModel{TModel}"/> class.
+        /// Initializes a new instance of the <see cref="PaginatedList{TModel}"/> class.
         /// </summary>
-        /// <param name="items">The list of items in the paginated view.</param>
+        /// <param name="items">The list of items in the paginated model.</param>
         /// <param name="numberOfTotalItems">The number of total items.</param>
         /// <param name="pageNumber">The current page number (optional).</param>
         /// <param name="pageSize">The number of items per page (optional).</param>
-        public PaginatedViewModel(
+        public PaginatedList(
             List<TModel> items,
             long numberOfTotalItems,
             int? pageNumber = null,

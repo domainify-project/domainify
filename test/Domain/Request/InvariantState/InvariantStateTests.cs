@@ -12,6 +12,7 @@ namespace Domainify.Test.Domain
     {
         private class TestEntity : Entity<TestEntity, Guid>, IAggregateRoot
         {
+            public double Version { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         }
 
         [TestMethod]
@@ -25,7 +26,7 @@ namespace Domainify.Test.Domain
             await invariantState.AssestAsync(mediatorMock.Object);
 
             // Assert
-            invariantState.GetIssues().Should().BeEmpty();
+            invariantState.GetFaults().Should().BeEmpty();
         }
     }
 }

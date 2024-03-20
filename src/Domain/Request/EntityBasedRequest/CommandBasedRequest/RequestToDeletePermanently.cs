@@ -22,7 +22,7 @@ namespace Domainify.Domain
             await new InvariantState<TEntity>()
                 .DefineAnInvariant(
                 result: !entity.IsDeleted,
-                issue: new TheEntityIsNotAlreadyDeletedSoDeletingItPermanentlyIsNotPossible(typeof(TEntity).Name))
+                fault: new TheEntityIsNotAlreadyDeletedSoDeletingItPermanentlyIsNotPossible(typeof(TEntity).Name))
                 .AssestAsync(mediator);
 
             // Perform permanent deletion of the entity

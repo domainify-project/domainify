@@ -49,14 +49,14 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Validates a field based on the provided value and adds any resulting issues to the collection.
+        /// Validates a field based on the provided value and adds any resulting faults to the collection.
         /// </summary>
         /// <param name="value">The value to validate.</param>
-        /// <param name="_issues">The collection to add issues to, if any.</param>
+        /// <param name="_issues">The collection to add faults to, if any.</param>
         /// <param name="propertyName">The name of the property being validated.</param>
         public virtual void Validate(
             object? value,
-            ICollection<IIssue> _issues,
+            ICollection<IFault> _issues,
             string propertyName = "")
         {
             throw new NotImplementedException();

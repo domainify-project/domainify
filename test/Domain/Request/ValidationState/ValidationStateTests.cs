@@ -8,7 +8,7 @@ using Domainify.Domain;
 namespace Domainify.Test.Domain
 {
     // Mock implementation of IIssue for testing
-    public class MockIssue : IIssue
+    public class MockIssue : IFault
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -64,13 +64,13 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var issue = new MockIssue();
+            var fault = new MockIssue();
 
             // Act
-            validationState.DefineAValidation(true, issue);
+            validationState.DefineAValidation(true, fault);
 
             // Assert
-            validationState.GetIssues().Should().Contain(issue);
+            validationState.GetFaults().Should().Contain(fault);
         }
 
         [TestMethod]
@@ -78,13 +78,13 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var issue = new MockIssue();
+            var fault = new MockIssue();
 
             // Act
-            validationState.DefineAValidation(false, issue);
+            validationState.DefineAValidation(false, fault);
 
             // Assert
-            validationState.GetIssues().Should().BeEmpty();
+            validationState.GetFaults().Should().BeEmpty();
         }
 
         [TestMethod]
@@ -92,13 +92,13 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var issue = new MockIssue();
+            var fault = new MockIssue();
 
             // Act
-            validationState.DefineAValidation(() => true, issue);
+            validationState.DefineAValidation(() => true, fault);
 
             // Assert
-            validationState.GetIssues().Should().Contain(issue);
+            validationState.GetFaults().Should().Contain(fault);
         }
 
         [TestMethod]
@@ -106,13 +106,13 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var issue = new MockIssue();
+            var fault = new MockIssue();
 
             // Act
-            validationState.DefineAValidation(() => false, issue);
+            validationState.DefineAValidation(() => false, fault);
 
             // Assert
-            validationState.GetIssues().Should().BeEmpty();
+            validationState.GetFaults().Should().BeEmpty();
         }
     }
 }
