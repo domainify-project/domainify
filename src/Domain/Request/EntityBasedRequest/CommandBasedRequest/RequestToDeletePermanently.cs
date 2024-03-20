@@ -3,21 +3,29 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents a request to permanently delete an entity.
+    /// Represents a request to delete an entity permanently.
     /// </summary>
-    /// <typeparam name="TEntity">The type of entity to permanently delete.</typeparam>
+    /// <typeparam name="TEntity">Type of entity to be deleted.</typeparam>
     public abstract class RequestToDeletePermanently<TEntity> :
-        BaseCommandRequest<TEntity>, IRequest
+        CommandRequest<TEntity>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
-        /// Resolves the request to permanently delete the specified entity.
+        /// Resolves the request asynchronously by deleting the entity permanently.
         /// </summary>
-        /// <param name="mediator">The mediator instance to handle the resolution.</param>
-        /// <param name="entity">The entity to be permanently deleted.</param>
+        /// <param name="mediator">Mediator instance to handle the resolution.</param>
+        /// <param name="entity">Entity to be deleted permanently.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async override Task ResolveAsync(IMediator mediator, TEntity entity)
         {
-            // Permanently delete the entity
+            // Check if the entity is already deleted before attempting permanent deletion
+            await new InvariantState<TEntity>()
+                .DefineAnInvariant(
+                result: !entity.IsDeleted,
+                fault: new TheEntityIsNotAlreadyDeletedSoDeletingItPermanentlyIsNotPossible(typeof(TEntity).Name))
+                .AssestAsync(mediator);
+
+            // Perform permanent deletion of the entity
             entity.DeletePermanently();
         }
     }

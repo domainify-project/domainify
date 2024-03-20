@@ -52,14 +52,14 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             var emailPatternAttribute = new ShouldMatchEmailPattern();
-            var issues = new List<IIssue>();
+            var faults = new List<IFault>();
 
             // Act
-            emailPatternAttribute.Validate("invalid-email", issues);
+            emailPatternAttribute.Validate("invalid-email", faults);
 
             // Assert
-            issues.Should().HaveCount(1);
-            issues[0].Should().BeOfType<FieldIsNotAValidEamilAddress>();
+            faults.Should().HaveCount(1);
+            faults[0].Should().BeOfType<FieldIsNotAValidEamilAddress>();
         }
 
         [TestMethod]

@@ -3,9 +3,9 @@
 namespace Domainify.Domain
 {
     // <summary>
-    /// Represents an invariant issue that occurs when validating a field, and its length is less than the specified minimum length limit.
+    /// Represents an invariant fault that occurs when validating a field, and its length is less than the specified minimum length limit.
     /// </summary>
-    public class FieldLengthIsLessThanMinimumLengthLimit : ValidationIssue
+    public class FieldLengthIsLessThanMinimumLengthLimit : ValidationFault
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldLengthIsLessThanMinimumLengthLimit"/> class
@@ -13,7 +13,7 @@ namespace Domainify.Domain
         /// </summary>
         /// <param name="minLength">The minimum allowed length for the field.</param>
         /// <param name="fieldName">The name of the field with a length less than the minimum length limit.</param>
-        /// <param name="description">A custom description for the invariant issue (optional).</param>
+        /// <param name="description">A custom description for the invariant fault (optional).</param>
         public FieldLengthIsLessThanMinimumLengthLimit(
             int minLength, string fieldName = "", string description = "") :
             base (outerDescription: description,

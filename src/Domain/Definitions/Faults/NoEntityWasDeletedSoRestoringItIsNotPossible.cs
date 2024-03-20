@@ -3,15 +3,15 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents an issue where an attempt was made to restore an entity that has not been deleted.
+    /// Represents an fault where an attempt was made to restore an entity that has not been deleted.
     /// </summary>
-    public class NoEntityWasDeletedSoRestoringItIsNotPossible : InvariantIssue
+    public class NoEntityWasDeletedSoRestoringItIsNotPossible : InvariantFault
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NoEntityWasDeletedSoRestoringItIsNotPossible"/> class.
         /// </summary>
         /// <param name="entityName">The name of the entity that was attempted to be restored.</param>
-        /// <param name="description">A description of the issue.</param>
+        /// <param name="description">A description of the fault.</param>
         public NoEntityWasDeletedSoRestoringItIsNotPossible(
             string entityName = "", string description = "") :
             base (outerDescription: description,

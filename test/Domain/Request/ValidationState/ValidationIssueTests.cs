@@ -11,7 +11,7 @@ namespace Domainify.Test.Domain
         public void Constructor_Should_Set_Name()
         {
             // Arrange & Act
-            var validationIssue = new ValidationIssue();
+            var validationIssue = new ValidationFault();
 
             // Assert
             validationIssue.Name.Should().NotBeNullOrEmpty();
@@ -21,7 +21,7 @@ namespace Domainify.Test.Domain
         public void Constructor_Should_Set_Default_Description()
         {
             // Arrange & Act
-            var validationIssue = new ValidationIssue();
+            var validationIssue = new ValidationFault();
 
             // Assert
             validationIssue.Description.Should().Be("A validation error has happened.");
@@ -34,7 +34,7 @@ namespace Domainify.Test.Domain
             var outerDescription = "Outer description";
 
             // Act
-            var validationIssue = new ValidationIssue(outerDescription);
+            var validationIssue = new ValidationFault(outerDescription);
 
             // Assert
             validationIssue.Description.Should().Be(outerDescription);
@@ -47,7 +47,7 @@ namespace Domainify.Test.Domain
             var innerDescription = "Inner description";
 
             // Act
-            var validationIssue = new ValidationIssue(innerDescription: innerDescription);
+            var validationIssue = new ValidationFault(innerDescription: innerDescription);
 
             // Assert
             validationIssue.Description.Should().Be(innerDescription);
@@ -61,7 +61,7 @@ namespace Domainify.Test.Domain
             var innerDescription = "Inner description";
 
             // Act
-            var validationIssue = new ValidationIssue(outerDescription, innerDescription);
+            var validationIssue = new ValidationFault(outerDescription, innerDescription);
 
             // Assert
             validationIssue.Description.Should().Be(outerDescription);

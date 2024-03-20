@@ -3,9 +3,9 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents an invariant issue that occurs when validating a field, and its length is more than the specified maximum length limit.
+    /// Represents an invariant fault that occurs when validating a field, and its length is more than the specified maximum length limit.
     /// </summary>
-    public class FieldLengthIsMoreThanMaximumLengthLimit : ValidationIssue
+    public class FieldLengthIsMoreThanMaximumLengthLimit : ValidationFault
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldLengthIsMoreThanMaximumLengthLimit"/> class
@@ -13,7 +13,7 @@ namespace Domainify.Domain
         /// </summary>
         /// <param name="maxLength">The maximum allowed length for the field.</param>
         /// <param name="fieldName">The name of the field with a length more than the maximum length limit.</param>
-        /// <param name="description">A custom description for the invariant issue (optional).</param>
+        /// <param name="description">A custom description for the invariant fault (optional).</param>
         public FieldLengthIsMoreThanMaximumLengthLimit(
             int maxLength, string fieldName = "", string description = "") :
             base (outerDescription: description,

@@ -16,9 +16,9 @@ namespace Domainify.Domain
         private TRequest Request { get; set; }
 
         /// <summary>
-        /// The list of validation issues.
+        /// The list of validation faults.
         /// </summary>
-        private readonly List<IIssue> _issues = new();
+        private readonly List<IFault> _issues = new();
 
         /// <summary>
         /// The list of validations.
@@ -26,9 +26,9 @@ namespace Domainify.Domain
         private readonly List<Validation> _validations = new();
 
         /// <summary>
-        /// Gets the list of validation issues.
+        /// Gets the list of validation faults.
         /// </summary>
-        public List<IIssue> GetIssues() => _issues;
+        public List<IFault> GetFaults() => _issues;
 
         /// <summary>
         /// Gets the list of validations.
@@ -57,33 +57,33 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Defines a validation based on a specified result and associated issue.
+        /// Defines a validation based on a specified result and associated fault.
         /// </summary>
         /// <param name="result">The result of the condition.</param>
-        /// <param name="issue">The issue associated with the validation.</param>
+        /// <param name="fault">The fault associated with the validation.</param>
         /// <returns>The current instance of the validation state for fluent chaining.</returns>
         public ValidationState<TRequest> DefineAValidation(
             bool result,
-            IIssue issue)
+            IFault fault)
         {
             if (result)
-                _issues.Add(issue);
+                _issues.Add(fault);
 
             return this;
         }
 
         /// <summary>
-        /// Defines a validation based on a specified condition and associated issue.
+        /// Defines a validation based on a specified condition and associated fault.
         /// </summary>
         /// <param name="condition">The condition to evaluate.</param>
-        /// <param name="issue">The issue associated with the validation.</param>
+        /// <param name="fault">The fault associated with the validation.</param>
         /// <returns>The current instance of the validation state for fluent chaining.</returns>
         public ValidationState<TRequest> DefineAValidation(
             Func<bool> condition,
-            IIssue issue)
+            IFault fault)
         {
             if (condition())
-                _issues.Add(issue);
+                _issues.Add(fault);
 
             return this;
         }
@@ -96,8 +96,8 @@ namespace Domainify.Domain
             foreach (var validation in _validations)
             {
                 if (validation.Resolve())
-                    if (validation.GetIssue() != null)
-                        _issues.Add(validation.GetIssue()!);
+                    if (validation.GetFault() != null)
+                        _issues.Add(validation.GetFault()!);
             }
 
             ValidateValiationAttributes();
@@ -172,7 +172,7 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Throws an error exception containing the list of detected validation issues.
+        /// Throws an error exception containing the list of detected validation faults.
         /// </summary>
         private void ThrowErrorException()
         {
@@ -180,7 +180,7 @@ namespace Domainify.Domain
                 new Error(
                     service: Assembly.GetEntryAssembly()!.GetName().Name!,
                     errorType: ErrorType.Validation,
-                    issues: _issues));
+                    faults: _issues));
         }
     }
 }

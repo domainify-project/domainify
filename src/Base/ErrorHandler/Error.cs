@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace Domainify
 {
     /// <summary>
-    /// Represents an error in the application, containing information about the service, error type, issues, and a request ID.
+    /// Represents an error in the application, containing information about the service, error type, faults, and a request ID.
     /// </summary>
     public class Error
     {
@@ -13,15 +13,15 @@ namespace Domainify
         /// </summary>
         /// <param name="service">The name of the service where the error occurred.</param>
         /// <param name="errorType">The type of the error.</param>
-        /// <param name="issues">A list of issues associated with the error.</param>
+        /// <param name="faults">A list of faults associated with the error.</param>
         public Error(
             string service,
             ErrorType errorType,
-            List<IIssue> issues)
+            List<IFault> faults)
         {
             Service = service;
             ErrorType = errorType;
-            Issues = issues;
+            Faults = faults;
         }
 
         /// <summary>
@@ -43,10 +43,10 @@ namespace Domainify
         public virtual string Type { get { return ErrorType.ToString(); } }
 
         /// <summary>
-        /// Gets or sets the list of issues associated with the error.
+        /// Gets or sets the list of faults associated with the error.
         /// </summary>
         [DataMember(Order = 4)]
-        public virtual List<IIssue> Issues { get; set; }
+        public virtual List<IFault> Faults { get; set; }
 
         /// <summary>
         /// Gets or sets the error type.

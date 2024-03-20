@@ -65,14 +65,14 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             var minLengthAttribute = new MinLengthShouldBeAttribute(5);
-            var issues = new List<IIssue>();
+            var faults = new List<IFault>();
 
             // Act
-            minLengthAttribute.Validate("123", issues);
+            minLengthAttribute.Validate("123", faults);
 
             // Assert
-            issues.Should().HaveCount(1);
-            issues[0].Should().BeOfType<FieldLengthIsLessThanMinimumLengthLimit>();
+            faults.Should().HaveCount(1);
+            faults[0].Should().BeOfType<FieldLengthIsLessThanMinimumLengthLimit>();
         }
 
         [TestMethod]

@@ -7,7 +7,7 @@ namespace Domainify.Domain
     /// </summary>
     /// <typeparam name="TEntity">The type of entity to restore.</typeparam>
     public abstract class RequestToRestore<TEntity> :
-        BaseCommandRequest<TEntity>, IRequest
+        CommandRequest<TEntity>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
@@ -17,11 +17,11 @@ namespace Domainify.Domain
         /// <param name="entity">The entity to be restored.</param>
         public async override Task ResolveAsync(IMediator mediator, TEntity entity)
         {
-            // Check if the entity is not deleted, if so, raise an invariant issue
+            // Check if the entity is not deleted, if so, raise an invariant fault
             await new InvariantState<TEntity>()
                 .DefineAnInvariant(
                 result: !entity.IsDeleted,
-                issue: new NoEntityWasDeletedSoRestoringItIsNotPossible(typeof(TEntity).Name))
+                fault: new NoEntityWasDeletedSoRestoringItIsNotPossible(typeof(TEntity).Name))
                 .AssestAsync(mediator);
 
             // Restore the entity

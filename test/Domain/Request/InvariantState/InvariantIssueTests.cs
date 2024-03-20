@@ -14,10 +14,10 @@ namespace Domainify.Test.Domain
             // Arrange
 
             // Act
-            var invariantIssue = new InvariantIssue("", "");
+            var invariantIssue = new InvariantFault("", "");
 
             // Assert
-            invariantIssue.Name.Should().Be(typeof(InvariantIssue).FullName);
+            invariantIssue.Name.Should().Be(typeof(InvariantFault).FullName);
             invariantIssue.Description.Should().Be("An invariant error has happened.");
         }
     }

@@ -4,7 +4,7 @@ using Domainify.Domain;
 
 namespace Domainify.Test
 {
-    public class ValidationA : ValidationIssue
+    public class ValidationA : ValidationFault
     {
         public ValidationA(
             string entityName = "",
@@ -13,7 +13,7 @@ namespace Domainify.Test
         {
         }
     }
-    public class ValidationB : ValidationIssue
+    public class ValidationB : ValidationFault
     {
         public ValidationB(
             string entityName = "",
@@ -29,7 +29,7 @@ namespace Domainify.Test
         //[TestMethod]
         //public void RetrieveError_ShouldReturnError_WhenValidSerializedErrorProvided()
         //{
-        //    var issues = new List<BaseIssue>
+        //    var faults = new List<BaseIssue>
         //    {
         //        new ValidationA (),
         //        new ValidationB ()
@@ -38,7 +38,7 @@ namespace Domainify.Test
         //    var error = new Error(
         //        service: "TestService",
         //        errorType: ErrorType.Validation,
-        //        issues: issues);
+        //        faults: faults);
 
         //    var errorMessage = MessagedErrorHelper.ConvertToErrorMessage(error);
 
@@ -49,8 +49,8 @@ namespace Domainify.Test
         //    retrievedError.Should().NotBeNull();
         //    retrievedError!.ErrorType.Should().Be(ErrorType.Validation);
         //    retrievedError.Issues.Should().HaveCount(2);
-        //    retrievedError.Issues.Should().Contain(issue => issue.Name == "Domainify.Test.ErrorHandler.ValidationA" && issue.Description == "Description of Validation A");
-        //    retrievedError.Issues.Should().Contain(issue => issue.Name == "Domainify.Test.ErrorHandler.ValidationB" && issue.Description == "Description of Validation B");
+        //    retrievedError.Issues.Should().Contain(fault => fault.Name == "Domainify.Test.ErrorHandler.ValidationA" && fault.Description == "Description of Validation A");
+        //    retrievedError.Issues.Should().Contain(fault => fault.Name == "Domainify.Test.ErrorHandler.ValidationB" && fault.Description == "Description of Validation B");
         //}
 
         [TestMethod]
@@ -70,7 +70,7 @@ namespace Domainify.Test
         public void IsErrorException_ShouldReturnTrue_WhenValidSerializedErrorProvided()
         {
             // Arrange
-            var issues = new List<IIssue>
+            var faults = new List<IFault>
             {
                 new ValidationA (),
                 new ValidationB ()
@@ -79,7 +79,7 @@ namespace Domainify.Test
             var error = new Error(
                 service: "TestService",
                 errorType: ErrorType.Validation,
-                issues: issues);
+                faults: faults);
 
             var errorMessage = MessagedErrorHelper.ConvertToErrorMessage(error);
 

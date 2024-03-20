@@ -65,14 +65,14 @@ namespace Domainify.Test.Domain
         {
             // Arrange
             var maxLengthAttribute = new MaxLengthShouldBeAttribute(3);
-            var issues = new List<IIssue>();
+            var faults = new List<IFault>();
 
             // Act
-            maxLengthAttribute.Validate("12345", issues);
+            maxLengthAttribute.Validate("12345", faults);
 
             // Assert
-            issues.Should().HaveCount(1);
-            issues[0].Should().BeOfType<FieldLengthIsMoreThanMaximumLengthLimit>();
+            faults.Should().HaveCount(1);
+            faults[0].Should().BeOfType<FieldLengthIsMoreThanMaximumLengthLimit>();
         }
 
         [TestMethod]

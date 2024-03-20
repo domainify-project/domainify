@@ -38,10 +38,10 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Gets the validation issue if the start date is later than the end date.
+        /// Gets the validation fault if the start date is later than the end date.
         /// </summary>
-        /// <returns>An instance of <see cref="IIssue"/> representing the validation issue.</returns>
-        public override IIssue? GetIssue()
+        /// <returns>An instance of <see cref="IFault"/> representing the validation fault.</returns>
+        public override IFault? GetFault()
         {
             if (Resolve())
                 return new StartDateCanNotBeLaterThanEndDate(typeof(TEntity).Name, Description);

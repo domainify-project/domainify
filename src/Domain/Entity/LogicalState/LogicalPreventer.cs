@@ -22,10 +22,10 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Gets the issue associated with the logical preventer.
+        /// Gets the fault associated with the logical preventer.
         /// </summary>
-        /// <returns>An instance implementing the <see cref="IIssue"/> interface representing the issue, or null if no issue is present.</returns>
-        public virtual IIssue? GetIssue()
+        /// <returns>An instance implementing the <see cref="IFault"/> interface representing the fault, or null if no fault is present.</returns>
+        public virtual IFault? GetFault()
         {
             throw new NotImplementedException();
         }

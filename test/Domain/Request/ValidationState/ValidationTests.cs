@@ -15,7 +15,7 @@ namespace Domainify.Test.Domain
                 return true;
             }
 
-            public override IIssue? GetIssue()
+            public override IFault? GetFault()
             {
                 return null;
             }

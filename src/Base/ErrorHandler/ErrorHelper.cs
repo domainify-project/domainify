@@ -41,9 +41,9 @@ namespace Domainify
                 stack = exception.StackTrace.Trim().Split("\r\n");
             object? stackTrace = stack;
 
-            var issues = new List<IIssue>
+            var faults = new List<IFault>
             {
-                new TechnicalIssue
+                new TechnicalFault
                 {
                     Name = exception.GetType().Name,
                     Description = exception.Message
@@ -52,7 +52,7 @@ namespace Domainify
             return new DevError(
                 service: serviceName,
                 errorType: ErrorType.Technical,
-                issues: issues,
+                faults: faults,
                 environmentState: AppEnvironment.State,
                 stackTrace: stackTrace);
         }

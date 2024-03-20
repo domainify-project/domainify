@@ -5,7 +5,7 @@ namespace Domainify
 {
     /// <summary>
     /// Helper class providing methods for working with serialized errors.
-    /// An example of an serialized error: "This is a <Error>:  {type: validation, issues: [{name:"...", description"..."},{name:"...", description"..."}]}";
+    /// An example of an serialized error: "This is a <Error>:  {type: validation, faults: [{name:"...", description"..."},{name:"...", description"..."}]}";
     /// </summary>
     internal static class MessagedErrorHelper
     {

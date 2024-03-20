@@ -50,19 +50,19 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Validates the specified value based on the standard email pattern and adds an issue if the validation fails.
+        /// Validates the specified value based on the standard email pattern and adds an fault if the validation fails.
         /// </summary>
         /// <param name="value">The value to validate.</param>
-        /// <param name="_issues">The collection of issues to which an issue may be added.</param>
+        /// <param name="_faults">The collection of faults to which an fault may be added.</param>
         /// <param name="propertyName">The name of the property being validated.</param>
         public override void Validate(
             object? value,
-            ICollection<IIssue> _issues,
+            ICollection<IFault> _faults,
             string propertyName = "")
         {
             if (!IsValid(value))
             {
-                _issues.Add(
+                _faults.Add(
                     new FieldIsNotAValidEamilAddress(
                         fieldName: propertyName,
                         description: Description!));

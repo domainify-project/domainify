@@ -51,9 +51,9 @@ namespace Domainify.Domain
         public bool TrackingMode { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets a flag indicating whether to include even deleted data.
+        /// Gets or sets a flag indicating whether to include even deleted items.
         /// </summary>
-        public bool EvenDeletedData { get; set; } = false;
+        public bool IncludeDeleted { get; set; } = false;
 
         /// <summary>
         /// Gets a value indicating whether to include deleted data in the query configuration.
@@ -61,7 +61,7 @@ namespace Domainify.Domain
         /// <returns>True if even deleted data should be included; otherwise, false.</returns>
         public virtual bool OnIncludingDeletedDataConfiguration()
         {
-            return EvenDeletedData;
+            return IncludeDeleted;
         }
 
         /// <summary>

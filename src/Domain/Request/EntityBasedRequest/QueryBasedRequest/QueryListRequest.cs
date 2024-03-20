@@ -43,12 +43,12 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Asynchronously handles the next step in the request processing using the provided mediator and the returned items.
+        /// Asynchronously handles the then step in the request processing using the provided mediator and the returned items.
         /// </summary>
-        /// <param name="mediator">The mediator used to handle the next step.</param>
+        /// <param name="mediator">The mediator used to handle the then step.</param>
         /// <param name="returnedItems">The returned items from the previous step.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
-        public async virtual Task NextAsync(IMediator mediator, TReturnedType returnedItems)
+        public async virtual Task ThenAsync(IMediator mediator, TReturnedType returnedItems)
         {
             throw new NotImplementedException();
         }
