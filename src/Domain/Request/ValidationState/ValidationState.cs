@@ -57,16 +57,16 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Defines a validation based on a specified result and associated fault.
+        /// Defines a validation based on a specified condition and associated fault.
         /// </summary>
-        /// <param name="result">The result of the condition.</param>
+        /// <param name="condition">The condition to check.</param>
         /// <param name="fault">The fault associated with the validation.</param>
         /// <returns>The current instance of the validation state for fluent chaining.</returns>
         public ValidationState<TRequest> DefineAValidation(
-            bool result,
+            bool condition,
             IFault fault)
         {
-            if (result)
+            if (condition)
                 _issues.Add(fault);
 
             return this;

@@ -65,7 +65,7 @@ namespace Domainify.Test.Domain
 
             // Assert
             fault.Should().NotBeNull();
-            fault.Should().BeOfType<StartDateCanNotBeLaterThanEndDate>();
+            fault.Should().BeOfType<StartDateCanNotBeLaterThanEndDateFault>();
         }
     }
 }

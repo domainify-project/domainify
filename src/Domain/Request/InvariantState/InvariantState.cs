@@ -43,15 +43,15 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Defines an invariant based on a specified result and associated fault.
+        /// Defines an invariant based on a specified condition and associated fault.
         /// </summary>
-        /// <param name="result">The result of the condition.</param>
+        /// <param name="condition">The condition to check.</param>
         /// <param name="fault">The fault associated with the invariant.</param>
         /// <returns>The current instance of the invariant state for fluent chaining.</returns>
         public InvariantState<TEntity> DefineAnInvariant(
-            bool result, IFault fault)
+            bool condition, IFault fault)
         {
-            if (result)
+            if (condition)
                 _issues.Add(fault);
 
             return this;

@@ -72,7 +72,7 @@ namespace Domainify.Test.Domain
 
             // Assert
             faults.Should().HaveCount(1);
-            faults[0].Should().BeOfType<FieldLengthIsLessThanMinimumLengthLimit>();
+            faults[0].Should().BeOfType<FieldLengthIsLessThanMinimumLengthLimitFault>();
         }
 
         [TestMethod]

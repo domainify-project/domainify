@@ -3,17 +3,17 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents an invariant fault that occurs when the start date of an entity is later than the end date during validation.
+    /// Represents a fault that occurs when the start date of an entity is later than the end date during validation.
     /// </summary>
-    public class StartDateCanNotBeLaterThanEndDate : ValidationFault
+    public class StartDateCanNotBeLaterThanEndDateFault : ValidationFault
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StartDateCanNotBeLaterThanEndDate"/> class
+        /// Initializes a new instance of the <see cref="StartDateCanNotBeLaterThanEndDateFault"/> class
         /// with the specified entity name and description.
         /// </summary>
         /// <param name="entityName">The name of the entity for which the start date is later than the end date.</param>
         /// <param name="description">A custom description for the invariant fault (optional).</param>
-        public StartDateCanNotBeLaterThanEndDate(
+        public StartDateCanNotBeLaterThanEndDateFault(
             string entityName = "", string description = "") :
             base (outerDescription: description,
                 innerDescription: string.Format(CultureInfo.CurrentCulture,

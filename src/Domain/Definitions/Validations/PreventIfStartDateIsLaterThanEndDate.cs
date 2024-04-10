@@ -44,7 +44,7 @@ namespace Domainify.Domain
         public override IFault? GetFault()
         {
             if (Resolve())
-                return new StartDateCanNotBeLaterThanEndDate(typeof(TEntity).Name, Description);
+                return new StartDateCanNotBeLaterThanEndDateFault(typeof(TEntity).Name, Description);
 
             return null;
         }

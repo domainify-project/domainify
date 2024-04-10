@@ -47,18 +47,6 @@ namespace Domainify.Domain
         /// <returns>A task representing the asynchronous operation.</returns>
         public async virtual Task ResolveAsync(IMediator mediator)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Asynchronously handles the then step in the query processing using the provided mediator and returned value.
-        /// </summary>
-        /// <param name="mediator">The mediator used to handle the then step.</param>
-        /// <param name="returnedValue">The returned value from the previous step.</param>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public async virtual Task ThenAsync(IMediator mediator, TReturnedType returnedValue)
-        {
-            throw new NotImplementedException();
         }
     }
 }

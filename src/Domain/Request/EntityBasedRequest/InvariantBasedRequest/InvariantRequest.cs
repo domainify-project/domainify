@@ -21,7 +21,7 @@ namespace Domainify.Domain
         /// <returns>The fault related to the invariant condition, or null if no fault exists.</returns>
         public virtual IFault? GetFault()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         /// <summary>

@@ -41,16 +41,16 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Describes a logical preventer based on a specified result and associated fault.
+        /// Describes a logical preventer based on a specified condition and associated fault.
         /// </summary>
-        /// <param name="result">The result of the condition.</param>
+        /// <param name="condition">The condition to check.</param>
         /// <param name="fault">The fault associated with the preventer.</param>
         /// <returns>The current instance of the logical state for fluent chaining.</returns>
         public LogicalState DescribeAPreventer(
-            bool result,
+            bool condition,
             IFault fault)
         {
-            if (result)
+            if (condition)
                 _faults.Add(fault);
 
             return this;

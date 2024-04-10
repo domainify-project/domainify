@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore.Diagnostics;
+
 namespace Domainify.Domain
 {
     /// <summary>
@@ -45,7 +47,7 @@ namespace Domainify.Domain
         /// <returns>True if the value is valid, false otherwise.</returns>
         public virtual bool IsValid(object? value)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         /// <summary>
@@ -59,7 +61,6 @@ namespace Domainify.Domain
             ICollection<IFault> _issues,
             string propertyName = "")
         {
-            throw new NotImplementedException();
         }
     }
 }

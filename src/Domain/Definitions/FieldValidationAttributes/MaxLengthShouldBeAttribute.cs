@@ -65,7 +65,7 @@ namespace Domainify.Domain
             if (!IsValid(value))
             {
                 _faults.Add(
-                    new FieldLengthIsMoreThanMaximumLengthLimit(
+                    new FieldLengthIsMoreThanMaximumLengthLimitFault(
                         fieldName: propertyName,
                         maxLength: Length,
                         description: Description!));
