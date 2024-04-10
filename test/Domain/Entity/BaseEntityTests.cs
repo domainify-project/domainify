@@ -69,19 +69,6 @@ namespace Domainify.Test.Domain
             entity.Invoking(e => e.DeletePermanently()).Should().NotThrow();
         }
 
-        [TestMethod]
-        public void Uniqueness_ShouldReturnNull()
-        {
-            // Arrange
-            var entity = new MockEntity();
-
-            // Act
-            var result = entity.Uniqueness();
-
-            // Assert
-            result.Should().BeNull();
-        }
-
         private class MockEntity : BaseEntity<object>
         {
         }

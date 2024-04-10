@@ -59,7 +59,7 @@ namespace Domainify.Test.Domain
 
             // Assert
             faults.Should().HaveCount(1);
-            faults[0].Should().BeOfType<FieldIsNotAValidEamilAddress>();
+            faults[0].Should().BeOfType<FieldIsNotAValidEamilAddressFault>();
         }
 
         [TestMethod]

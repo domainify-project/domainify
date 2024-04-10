@@ -7,7 +7,7 @@ namespace Domainify.Domain
     /// </summary>
     /// <typeparam name="TEntity">Type of entity to be deleted.</typeparam>
     public abstract class RequestToDeletePermanently<TEntity> :
-        CommandRequest<TEntity>
+        RequestToCheckEntityForDeletingPermanently<TEntity>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
@@ -18,15 +18,13 @@ namespace Domainify.Domain
         /// <returns>A task representing the asynchronous operation.</returns>
         public async override Task ResolveAsync(IMediator mediator, TEntity entity)
         {
-            // Check if the entity is already deleted before attempting permanent deletion
-            await new InvariantState<TEntity>()
-                .DefineAnInvariant(
-                result: !entity.IsDeleted,
-                fault: new TheEntityIsNotAlreadyDeletedSoDeletingItPermanentlyIsNotPossible(typeof(TEntity).Name))
-                .AssestAsync(mediator);
-
             // Perform permanent deletion of the entity
             entity.DeletePermanently();
+        }
+
+        public override void Prepare(TEntity entity)
+        {
+            base.Prepare(entity);
         }
     }
 }

@@ -18,18 +18,28 @@ namespace Domainify.Domain
         /// <returns>A task representing the asynchronous operation.</returns>
         public async virtual Task ResolveAsync(IMediator mediator)
         {
-            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Asynchronously handles the then step in the request processing using the provided mediator and the returned item.
+        /// Asynchronously handles the resolution of the query request using the provided mediator and the associated entity.
         /// </summary>
-        /// <param name="mediator">The mediator used to handle the then step.</param>
-        /// <param name="returnItem">The returned item from the previous step.</param>
+        /// <param name="mediator">The mediator used to resolve the query request.</param>
+        /// <param name="entity">The associated entity.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
-        public async virtual Task ThenAsync(IMediator mediator, TReturnedType returnItem)
+        public async virtual Task ResolveAsync(IMediator mediator, TEntity entity)
         {
-            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Prepares the specified entity for further processing or operation such as some come pre-defined invariants.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entity being prepared.</typeparam>
+        /// <param name="entity">The entity to be prepared.</param>
+        public virtual void Prepare(TEntity entity)
+        {
+            InvariantState.DefineAnInvariant(
+                condition: entity == null && PreventIfNoEntityWasFound,
+                fault: new NoEntityWasFoundFault(typeof(TEntity).Name));
         }
     }
 }

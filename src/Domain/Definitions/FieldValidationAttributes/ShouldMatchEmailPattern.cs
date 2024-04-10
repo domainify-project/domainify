@@ -63,7 +63,7 @@ namespace Domainify.Domain
             if (!IsValid(value))
             {
                 _faults.Add(
-                    new FieldIsNotAValidEamilAddress(
+                    new FieldIsNotAValidEamilAddressFault(
                         fieldName: propertyName,
                         description: Description!));
             }

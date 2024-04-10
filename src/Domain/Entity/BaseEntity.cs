@@ -56,11 +56,5 @@
         public virtual void DeletePermanently()
         {
         }
-
-        /// <summary>
-        /// Provides a condition for ensuring the uniqueness of the entity.
-        /// </summary>
-        /// <returns>A condition property specifying uniqueness criteria, or null if uniqueness is not required.</returns>
-        public virtual ConditionProperty<TEntity>? Uniqueness() { return null; }
     }
 }

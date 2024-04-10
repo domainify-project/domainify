@@ -18,7 +18,7 @@ namespace Domainify.Domain
         /// <returns>True if the validation is successful, false otherwise.</returns>
         public virtual bool Resolve()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Domainify.Domain
         /// <returns>An instance implementing the <see cref="IFault"/> interface representing the fault, or null if no fault is present.</returns>
         public virtual IFault? GetFault()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         /// <summary>

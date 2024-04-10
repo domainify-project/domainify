@@ -16,9 +16,9 @@ namespace Domainify.Domain
         /// Asynchronously resolves the logical preventer.
         /// </summary>
         /// <returns>A task representing the asynchronous operation with a boolean indicating resolution success.</returns>
-        public virtual Task<bool> ResolveAsync()
+        public async virtual Task<bool> ResolveAsync()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Domainify.Domain
         /// <returns>An instance implementing the <see cref="IFault"/> interface representing the fault, or null if no fault is present.</returns>
         public virtual IFault? GetFault()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         /// <summary>

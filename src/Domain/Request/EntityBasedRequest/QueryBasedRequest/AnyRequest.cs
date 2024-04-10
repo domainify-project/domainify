@@ -3,32 +3,20 @@
 namespace Domainify.Domain
 {
     /// <summary>
-    /// Represents a request to determine if any entities of a specific type exist based on the specified criteria.
+    /// Represents a base class for any request with specific entity type.
     /// </summary>
-    /// <typeparam name="TEntity">The type of the entity associated with the request.</typeparam>
+    /// <typeparam name="TEntity">The type of the entity.</typeparam>
     public abstract class AnyRequest<TEntity>
         : QueryRequest<TEntity>, IRequest<bool>
         where TEntity : BaseEntity<TEntity>
     {
         /// <summary>
-        /// Asynchronously resolves the request using the provided mediator.
+        /// Resolves the request asynchronously.
         /// </summary>
-        /// <param name="mediator">The mediator used to resolve the request.</param>
+        /// <param name="mediator">The mediator to use for resolving.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
         public async virtual Task ResolveAsync(IMediator mediator)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Asynchronously handles the then step in the request processing using the provided mediator and the result.
-        /// </summary>
-        /// <param name="mediator">The mediator used to handle the then step.</param>
-        /// <param name="result">The result of the request resolution.</param>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public async virtual Task ThenAsync(IMediator mediator, bool result)
-        {
-            throw new NotImplementedException();
         }
     }
 }

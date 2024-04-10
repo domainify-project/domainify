@@ -46,11 +46,6 @@ namespace Domainify.Domain
         public bool PreventIfNoEntityWasFound { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets a flag indicating whether to enable tracking mode.
-        /// </summary>
-        public bool TrackingMode { get; set; } = false;
-
-        /// <summary>
         /// Gets or sets a flag indicating whether to include even deleted items.
         /// </summary>
         public bool IncludeDeleted { get; set; } = false;

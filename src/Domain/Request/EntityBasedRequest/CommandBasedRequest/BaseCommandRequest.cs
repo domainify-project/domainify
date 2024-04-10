@@ -21,13 +21,21 @@ namespace Domainify.Domain
         }
 
         /// <summary>
+        /// Prepares the specified entity for further processing or operation such as some come pre-defined invariants.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entity being prepared.</typeparam>
+        /// <param name="entity">The entity to be prepared.</param>
+        public virtual void Prepare(TEntity entity)
+        {
+        }
+
+        /// <summary>
         /// Asynchronously resolves the command request.
         /// </summary>
         /// <param name="mediator">The mediator used to resolve the command request.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
-        public virtual Task ResolveAsync(IMediator mediator)
+        public async virtual Task ResolveAsync(IMediator mediator)
         {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -35,9 +43,9 @@ namespace Domainify.Domain
         /// </summary>
         /// <param name="mediator">The mediator used to resolve the command request.</param>
         /// <returns>A task representing the asynchronous operation and returning the associated entity.</returns>
-        public virtual Task<TEntity> ResolveAndGetEntityAsync(IMediator mediator)
+        public async virtual Task<TEntity> ResolveAndGetEntityAsync(IMediator mediator)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         /// <summary>
@@ -48,18 +56,6 @@ namespace Domainify.Domain
         /// <returns>A task representing the asynchronous operation.</returns>
         public async virtual Task ResolveAsync(IMediator mediator, TEntity entity)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Asynchronously handles the then step in the command processing using the provided mediator and the associated entity.
-        /// </summary>
-        /// <param name="mediator">The mediator used to handle the then step.</param>
-        /// <param name="entity">The associated entity.</param>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public async virtual Task ThenAsync(IMediator mediator, TEntity entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }
