@@ -8,7 +8,7 @@
         {
             base.Prepare(entity);
             InvariantState.DefineAnInvariant(
-                condition: entity.IsDeleted,
+                condition: !entity.IsDeleted,
                 fault: new EntityMustBeDeletedBeforeBenigDeletedPermanentlyFault());
         }
     }
