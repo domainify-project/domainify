@@ -38,7 +38,7 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void GetIssue_Should_ReturnNull_When_StartDateIsNotLaterThanEndDate()
+        public void GetFault_Should_ReturnNull_When_StartDateIsNotLaterThanEndDate()
         {
             // Arrange
             var startDate = new DateTime(2023, 1, 1);
@@ -53,7 +53,7 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void GetIssue_Should_ReturnIssue_When_StartDateIsLaterThanEndDate()
+        public void GetFault_Should_ReturnFault_When_StartDateIsLaterThanEndDate()
         {
             // Arrange
             var startDate = new DateTime(2023, 1, 2);

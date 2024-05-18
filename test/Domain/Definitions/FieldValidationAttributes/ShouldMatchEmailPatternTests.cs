@@ -48,7 +48,7 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void Validate_Should_AddIssue_When_ValidationFails()
+        public void Validate_Should_AddFault_When_ValidationFails()
         {
             // Arrange
             var emailPatternAttribute = new ShouldMatchEmailPattern();

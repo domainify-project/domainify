@@ -5,7 +5,7 @@ using Domainify.Domain;
 namespace Domainify.Test.Domain
 {
     [TestClass]
-    public class InvariantIssueTests
+    public class InvariantFaultTests
     {
 
         [TestMethod]
@@ -14,11 +14,11 @@ namespace Domainify.Test.Domain
             // Arrange
 
             // Act
-            var invariantIssue = new InvariantFault("", "");
+            var invariantFault = new InvariantFault("", "");
 
             // Assert
-            invariantIssue.Name.Should().Be(typeof(InvariantFault).FullName);
-            invariantIssue.Description.Should().Be("An invariant error has happened.");
+            invariantFault.Name.Should().Be(typeof(InvariantFault).FullName);
+            invariantFault.Description.Should().Be("An invariant error has happened.");
         }
     }
 }

@@ -7,8 +7,8 @@ using Domainify.Domain;
 
 namespace Domainify.Test.Domain
 {
-    // Mock implementation of IIssue for testing
-    public class MockIssue : IFault
+    // Mock implementation of IFault for testing
+    public class MockFault : IFault
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -60,11 +60,11 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void DefineAValidation_With_True_Condition_Should_Add_Issue_To_List()
+        public void DefineAValidation_With_True_Condition_Should_Add_Fault_To_List()
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var fault = new MockIssue();
+            var fault = new MockFault();
 
             // Act
             validationState.DefineAValidation(true, fault);
@@ -74,11 +74,11 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void DefineAValidation_With_False_Condition_Should_Not_Add_Issue_To_List()
+        public void DefineAValidation_With_False_Condition_Should_Not_Add_Fault_To_List()
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var fault = new MockIssue();
+            var fault = new MockFault();
 
             // Act
             validationState.DefineAValidation(false, fault);
@@ -88,11 +88,11 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void DefineAValidation_With_True_Condition_Function_Should_Add_Issue_To_List()
+        public void DefineAValidation_With_True_Condition_Function_Should_Add_Fault_To_List()
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var fault = new MockIssue();
+            var fault = new MockFault();
 
             // Act
             validationState.DefineAValidation(() => true, fault);
@@ -102,11 +102,11 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void DefineAValidation_With_False_Condition_Function_Should_Not_Add_Issue_To_List()
+        public void DefineAValidation_With_False_Condition_Function_Should_Not_Add_Fault_To_List()
         {
             // Arrange
             var validationState = new ValidationState<MockBaseRequest>(new MockBaseRequest());
-            var fault = new MockIssue();
+            var fault = new MockFault();
 
             // Act
             validationState.DefineAValidation(() => false, fault);
