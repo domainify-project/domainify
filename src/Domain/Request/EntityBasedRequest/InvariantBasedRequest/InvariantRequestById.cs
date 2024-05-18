@@ -27,16 +27,6 @@ namespace Domainify.Domain
         }
 
         /// <summary>
-        /// Overrides the base `Where` method to include a condition for the specified entity identifier.
-        /// </summary>
-        /// <returns>The expression builder associated with the request.</returns>
-        public override ExpressionBuilder<TEntity> Where()
-        {
-            WhereExpression.And(x => x.Id!.Equals(Id));
-            return base.Where();
-        }
-
-        /// <summary>
         /// Sets the identifier of the entity.
         /// </summary>
         /// <param name="value">The value to set as the identifier.</param>

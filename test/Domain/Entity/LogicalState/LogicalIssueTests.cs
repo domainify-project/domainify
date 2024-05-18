@@ -5,7 +5,7 @@ using Domainify.Domain;
 namespace Domainify.Test.Domain
 {
     [TestClass]
-    public class LogicalIssueTests
+    public class LogicalFaultTests
     {
         [TestMethod]
         public void Constructor_WithOuterAndInnerDescription_ShouldSetDescriptionToOuterDescription()
@@ -15,10 +15,10 @@ namespace Domainify.Test.Domain
             var innerDescription = "Inner Description";
 
             // Act
-            var logicalIssue = new LogicalFault(outerDescription, innerDescription);
+            var logicalFault = new LogicalFault(outerDescription, innerDescription);
 
             // Assert
-            logicalIssue.Description.Should().Be(outerDescription);
+            logicalFault.Description.Should().Be(outerDescription);
         }
 
         [TestMethod]
@@ -28,10 +28,10 @@ namespace Domainify.Test.Domain
             var innerDescription = "Inner Description";
 
             // Act
-            var logicalIssue = new LogicalFault(string.Empty, innerDescription);
+            var logicalFault = new LogicalFault(string.Empty, innerDescription);
 
             // Assert
-            logicalIssue.Description.Should().Be(innerDescription);
+            logicalFault.Description.Should().Be(innerDescription);
         }
 
         [TestMethod]
@@ -41,30 +41,30 @@ namespace Domainify.Test.Domain
             var outerDescription = "Outer Description";
 
             // Act
-            var logicalIssue = new LogicalFault(outerDescription, string.Empty);
+            var logicalFault = new LogicalFault(outerDescription, string.Empty);
 
             // Assert
-            logicalIssue.Description.Should().Be(outerDescription);
+            logicalFault.Description.Should().Be(outerDescription);
         }
 
         [TestMethod]
         public void Constructor_WithoutDescriptions_ShouldSetDefaultDescription()
         {
             // Act
-            var logicalIssue = new LogicalFault(string.Empty, string.Empty);
+            var logicalFault = new LogicalFault(string.Empty, string.Empty);
 
             // Assert
-            logicalIssue.Description.Should().Be("A logical error has happened.");
+            logicalFault.Description.Should().Be("A logical error has happened.");
         }
 
         [TestMethod]
         public void Name_ShouldBeSetToFullTypeName()
         {
             // Act
-            var logicalIssue = new LogicalFault(string.Empty, string.Empty);
+            var logicalFault = new LogicalFault(string.Empty, string.Empty);
 
             // Assert
-            logicalIssue.Name.Should().Be(typeof(LogicalFault).FullName);
+            logicalFault.Name.Should().Be(typeof(LogicalFault).FullName);
         }
     }
 }

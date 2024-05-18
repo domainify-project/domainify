@@ -29,7 +29,7 @@ namespace Domainify.Test
         //[TestMethod]
         //public void RetrieveError_ShouldReturnError_WhenValidSerializedErrorProvided()
         //{
-        //    var faults = new List<BaseIssue>
+        //    var faults = new List<BaseFault>
         //    {
         //        new ValidationA (),
         //        new ValidationB ()
@@ -48,9 +48,9 @@ namespace Domainify.Test
         //    // Assert
         //    retrievedError.Should().NotBeNull();
         //    retrievedError!.ErrorType.Should().Be(ErrorType.Validation);
-        //    retrievedError.Issues.Should().HaveCount(2);
-        //    retrievedError.Issues.Should().Contain(fault => fault.Name == "Domainify.Test.ErrorHandler.ValidationA" && fault.Description == "Description of Validation A");
-        //    retrievedError.Issues.Should().Contain(fault => fault.Name == "Domainify.Test.ErrorHandler.ValidationB" && fault.Description == "Description of Validation B");
+        //    retrievedError.Faults.Should().HaveCount(2);
+        //    retrievedError.Faults.Should().Contain(fault => fault.Name == "Domainify.Test.ErrorHandler.ValidationA" && fault.Description == "Description of Validation A");
+        //    retrievedError.Faults.Should().Contain(fault => fault.Name == "Domainify.Test.ErrorHandler.ValidationB" && fault.Description == "Description of Validation B");
         //}
 
         [TestMethod]

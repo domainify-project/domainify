@@ -16,7 +16,7 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public async Task AssestAsync_NoIssues_ShouldNotThrowException()
+        public async Task AssestAsync_NoFaults_ShouldNotThrowException()
         {
             // Arrange
             var mediatorMock = new Mock<IMediator>();

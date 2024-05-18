@@ -13,7 +13,7 @@ namespace Domainify.Domain
         /// <summary>
         /// The list of faults associated with the invariant state.
         /// </summary>
-        private readonly List<IFault> _issues = new();
+        private readonly List<IFault> _faults = new();
 
         /// <summary>
         /// The list of invariant requests to be assessed.
@@ -23,7 +23,7 @@ namespace Domainify.Domain
         /// <summary>
         /// Gets the list of faults associated with the invariant state.
         /// </summary>
-        public List<IFault> GetFaults() => _issues;
+        public List<IFault> GetFaults() => _faults;
 
         /// <summary>
         /// Gets the list of invariant requests.
@@ -52,7 +52,7 @@ namespace Domainify.Domain
             bool condition, IFault fault)
         {
             if (condition)
-                _issues.Add(fault);
+                _faults.Add(fault);
 
             return this;
         }
@@ -67,7 +67,7 @@ namespace Domainify.Domain
             IFault fault, Func<bool> condition)
         {
             if (condition())
-                _issues.Add(fault);
+                _faults.Add(fault);
 
             return this;
         }
@@ -83,10 +83,10 @@ namespace Domainify.Domain
             {
                 if ((bool)(await mediator.Send(request))!)
                     if (request.GetFault() != null)
-                        _issues.Add(request.GetFault()!);
+                        _faults.Add(request.GetFault()!);
             }
 
-            if (_issues.Count > 0)
+            if (_faults.Count > 0)
                 ThrowErrorException();
         }
 
@@ -99,7 +99,7 @@ namespace Domainify.Domain
                 new Error(
                     service: Assembly.GetEntryAssembly()!.GetName().Name!,
                     errorType: ErrorType.Invariant,
-                    faults: _issues));
+                    faults: _faults));
         }
     }
 }

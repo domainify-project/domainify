@@ -54,11 +54,11 @@ namespace Domainify.Domain
         /// Validates a field based on the provided value and adds any resulting faults to the collection.
         /// </summary>
         /// <param name="value">The value to validate.</param>
-        /// <param name="_issues">The collection to add faults to, if any.</param>
+        /// <param name="_faults">The collection to add faults to, if any.</param>
         /// <param name="propertyName">The name of the property being validated.</param>
         public virtual void Validate(
             object? value,
-            ICollection<IFault> _issues,
+            ICollection<IFault> _faults,
             string propertyName = "")
         {
         }

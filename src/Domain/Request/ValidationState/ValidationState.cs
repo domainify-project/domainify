@@ -18,7 +18,7 @@ namespace Domainify.Domain
         /// <summary>
         /// The list of validation faults.
         /// </summary>
-        private readonly List<IFault> _issues = new();
+        private readonly List<IFault> _faults = new();
 
         /// <summary>
         /// The list of validations.
@@ -28,7 +28,7 @@ namespace Domainify.Domain
         /// <summary>
         /// Gets the list of validation faults.
         /// </summary>
-        public List<IFault> GetFaults() => _issues;
+        public List<IFault> GetFaults() => _faults;
 
         /// <summary>
         /// Gets the list of validations.
@@ -67,7 +67,7 @@ namespace Domainify.Domain
             IFault fault)
         {
             if (condition)
-                _issues.Add(fault);
+                _faults.Add(fault);
 
             return this;
         }
@@ -83,7 +83,7 @@ namespace Domainify.Domain
             IFault fault)
         {
             if (condition())
-                _issues.Add(fault);
+                _faults.Add(fault);
 
             return this;
         }
@@ -97,13 +97,13 @@ namespace Domainify.Domain
             {
                 if (validation.Resolve())
                     if (validation.GetFault() != null)
-                        _issues.Add(validation.GetFault()!);
+                        _faults.Add(validation.GetFault()!);
             }
 
             ValidateValiationAttributes();
             ValidateBindedValiationAttributes();
 
-            if (_issues.Count > 0)
+            if (_faults.Count > 0)
                 ThrowErrorException();
         }
 
@@ -122,7 +122,7 @@ namespace Domainify.Domain
             var attributes = property.GetCustomAttributes().OfType<FieldValidationAttribute>();
 
             foreach (var attribute in attributes)
-                attribute.Validate(value, _issues, fieldName);
+                attribute.Validate(value, _faults, fieldName);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Domainify.Domain
                 new Error(
                     service: Assembly.GetEntryAssembly()!.GetName().Name!,
                     errorType: ErrorType.Validation,
-                    faults: _issues));
+                    faults: _faults));
         }
     }
 }

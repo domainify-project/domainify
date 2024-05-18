@@ -16,7 +16,7 @@ namespace Domainify.Test.Domain
         }
 
         [TestMethod]
-        public void Constructor_Should_SetConditionAndIssue()
+        public void Constructor_Should_SetConditionAndFault()
         {
             // Arrange
             Expression<Func<TestModel, bool>> condition = model => model.Age >= 18;

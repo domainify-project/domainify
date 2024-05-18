@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 
-
 namespace Domainify.Domain
 {
     /// <summary>
@@ -11,12 +10,7 @@ namespace Domainify.Domain
         BaseRequest
         where TEntity : BaseEntity<TEntity>
     {
-        /// <summary>
-        /// Gets or sets the expression builder used to construct filter conditions for the request.
-        /// </summary>
-        [JsonIgnore]
-        public ExpressionBuilder<TEntity> WhereExpression { get; private set; } = new ExpressionBuilder<TEntity>();
-
+ 
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityBasedRequest{TEntity}"/> class.
         /// </summary>
@@ -30,14 +24,5 @@ namespace Domainify.Domain
         /// </summary>
         [JsonIgnore]
         public InvariantState<TEntity> InvariantState { get; private set; }
-
-        /// <summary>
-        /// Provides access to the expression builder for constructing filter conditions.
-        /// </summary>
-        /// <returns>The expression builder associated with the request.</returns>
-        public virtual ExpressionBuilder<TEntity> Where()
-        {
-            return WhereExpression;
-        }
-    }
+     }
 }
